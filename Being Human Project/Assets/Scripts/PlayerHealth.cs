@@ -5,7 +5,7 @@ public class PlayerHealth : MonoBehaviour
     //starting health for player
     public int startingHealth;
     //current health for player
-    int currentHealth;
+    private int currentHealth;
 
     public void Awake()
     {
@@ -17,7 +17,7 @@ public class PlayerHealth : MonoBehaviour
     {
         //adding changeamount to current health
         currentHealth = currentHealth + changeAmount;
-        
+
         //keeping current health between 0 and starting value
         currentHealth = Mathf.Clamp(currentHealth, 0, startingHealth);
 
@@ -31,5 +31,10 @@ public class PlayerHealth : MonoBehaviour
     public void Kill()
     {
         Destroy(gameObject);
+    }
+
+    public int GetHealth()
+    {
+        return currentHealth;
     }
 }
