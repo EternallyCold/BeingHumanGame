@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -6,6 +7,15 @@ public class PlayerHealth : MonoBehaviour
     public int startingHealth;
     //current health for player
     private int currentHealth;
+    //the players medical records
+    public Slider slider;
+
+
+    public void Start()
+    {
+        slider.maxValue = startingHealth;
+        slider.value = currentHealth;
+    }
 
     public void Awake()
     {
@@ -17,6 +27,7 @@ public class PlayerHealth : MonoBehaviour
     {
         //adding changeamount to current health
         currentHealth = currentHealth + changeAmount;
+        slider.value = currentHealth;
 
         //keeping current health between 0 and starting value
         currentHealth = Mathf.Clamp(currentHealth, 0, startingHealth);
